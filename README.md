@@ -1,23 +1,38 @@
-# Amzon_vine_analysis
+# Amazon Vine Analysis
 ## Purpose:
 ---
-Extracting data to perform an ETL process before loading into a AWS RDS
+Extracting data to perform an ETL process before loading into a AWS RDS.  
+Then examine data to determine if any biases exist from Vine reviews. 
 
 ### Overview of the analysis: 
 ---
-Explain the purpose of this analysis.
-
+The exercise has two technical deliverables.  The first was and ETL processes, 
+to extract Amazon reviews from 50 different product areas.  I chose to use 
+review for outdoor equipment.  The data contained almost 45,000 products and 
+over 2,300,000 reviews.  After extracting the data from AWS S3 storage, I 
+cleaned and transformed the data into 4 different tables before loading to 
+a PostgreSQL Database also hosted in AWS RDS to be used for further analysis. 
+The second deliverable was to determine if any of the paid Vine reviews makes 
+a difference in the percentage of 5-star reviews. To do this I needed to capture 
+the Vine reviews and non-Vine reviews.  To complete the analysis, I used PySpark 
+to filter the reviews.     
 ### Results: 
 ---
-Using bulleted lists and images of DataFrames as support, address the following 
-questions:
+•	There were 107 Vine reviews for products with more than 20 ‘helpful reviews’ 
+and 38869 reviews from non-Vine participants. 
 
-How many Vine reviews and non-Vine reviews were there?
-How many Vine reviews were 5 stars? How many non-Vine reviews were 5 stars?
-What percentage of Vine reviews were 5 stars? What percentage of non-Vine reviews were 5 stars?
+![Count of Reviews by Type](/images/count_reviews.png)
+•	There were 56 5-Star reviews from Vine members and 21005 5-start reviews from 
+those who are not part of the Vine program.
+
+![Count of 5-star Reviews by Type](/images/5-star_review.png) 
+•	The percentage of Vine Reviews that were 5-star ratings is  52.69% and the 
+percentage of non-vine reviews is 52.34%
+
+![Percentage of 5-star Reviews by Type](/images/percent.png)
 
 
 ### Summary: 
-In your summary, state if there is any positivity bias for reviews in the Vine program. 
-Use the results of your analysis to support your statement. Then, provide one additional 
-analysis that you could do with the dataset to support your statement.
+My analysis showed there was not any positivity bias for reviews in the Vine 
+program because there was not any significant different in the 5-star rating 
+between members of the Vine program and those that are not members.
